@@ -44,25 +44,3 @@ public class Array {
 
 
 
-/*square brackets --array
-  new (keyword) ---create object
-  
-  ARRAY
-  --similar datatype elements should be stored
-            (ex:if we use int datatype means all elements(data) should be an integer,if we want to store names(data) use string ,decimal value--double,float)
-  --index element should be starts with o ( a[0]=1 , a[1]=2)
-  
-Drawbacks
-  --array size should be known in advance
-  if suppose we give size as 100 and only use 20...then balance 80
-  memory will be waste
- */
-
-
-/* 
- 
- m1=1,m2=2,...m100=100-----if we create more variables(m1,m2) to store data...by accessing it we need to remember all the variable names
- so that all the data should be stored in single variable  
- its called array. in array--access the data by index element.
- 
- */
