@@ -1,0 +1,86 @@
+package course;
+
+class Node1{
+	int data;
+	Node1 next;
+	
+	Node1(int data){
+		this.data=data;
+	}
+}
+
+class Mystack{
+	
+	Node1 top;  // by default null
+	
+	public void push(int data) {
+		//we need create node
+		Node1 n= new Node1(data);
+		
+		//n.next=null;         //if this line is given or not...a new node next was null
+		
+		if(top==null) {  //first element
+	        top=n;
+		}
+		else {   //next field
+			n.next = top;  // top is address of the node ex:2000
+			top=n; //update top
+		}
+		System.out.println("element added:"+ data);
+		
+	}
+	
+	public void peek() {
+		if(top==null) {
+			System.out.println("stack is empty"); //to avoid overflow...what if there was no element in stack and we do pop or peek or display function it shows error 
+		}
+	else {
+		System.out.println("peek element is "+top.data);
+	}
+	}
+	
+	public void pop() {
+		if(top==null) {
+			System.out.println("stack is empty"); //to avoid overflow...what if there was no element in stack and we do pop or peek or display function it shows error 
+		}
+		else {
+			System.out.println("popped element is "+ top.data);
+			top=top.next;
+		}
+	}
+
+	public void display() {
+		if(top==null) {
+			System.out.println("stack is empty"); //to avoid overflow...what if there was no element in stack and we do pop or peek or display function it shows error 
+		}
+		else {
+			Node1 temp=top;
+			System.out.println("elements are");
+			while(temp!=null) {
+				
+				System.out.println(temp.data);
+				temp=temp.next;
+			}
+		}
+	}
+}
+
+public class stacklinkedlist {
+
+	public static void main(String[] args) {
+		
+Mystack s = new Mystack();//to call the method...create an object mystack
+		s.push(10);
+		s.push(20);
+		s.push(30);
+		
+		s.peek();
+		
+		s.pop();
+		s.peek();
+		
+		s.display();
+		
+	}
+
+}
