@@ -1,0 +1,123 @@
+package course;    //stack using array implementation
+
+class stackdemo{
+	
+	int a[] = new int[5];// create array
+	int top = -1;
+	public void push(int data) { //push function,int data--argument
+		
+		top++;
+		a[top]= data;
+	}
+	
+	public void pop()// pop always remove top element
+	{
+		System.out.println("popped element = " + a[top]);
+		top--;//after deleting top element..we go to next one as peek
+		
+	}
+	
+	public void peek()// peek-- print  the top element
+	{
+		System.out.println("peek element = " + a[top]);
+	}
+	
+	
+	public void display() {
+		for(int i=top;i>=0;i--) {
+			System.out.println(a[i]);
+		}
+	}
+}
+
+public class stack {
+ public static void main(String[]args) {
+	
+	 stackdemo s= new stackdemo();//object creation
+	 s.push(10);
+	 s.push(20);
+	 s.push(30);
+	 
+	 s.peek();//print top element
+	 
+	 s.pop();// delete the top element....because it was stack..so it remove the top element 
+	 
+	 s.display();
+ }
+}
+
+
+
+                                            // underflow,overflow
+/*
+class stackdemo{
+	
+	int a[] = new int[5];// create array
+	int top = -1;
+	public void push(int data) { //push function,int data--argument
+		  
+		if(top==a.length-1) {
+			System.out.println("stack is full");  //overflow
+		}
+		else{
+		    top++;
+		    a[top]= data;
+		}
+	}
+	  
+	public void pop()// pop always remove top element
+	{       
+		
+		if(top==-1) {
+			System.out.println("stack empty");   //underflow
+		}
+		else {
+		System.out.println("popped element = " + a[top]);
+		top--;//after deleting top element..we go to next one as peek
+		}
+	}
+	
+	public void peek()// peek-- print  the top element
+	{
+
+		if(top==-1) {
+			System.out.println("empty stack ..no peek element");   //underflow
+		}
+		else {
+		System.out.println("peek element = " + a[top]);
+		}
+	}
+	
+	
+	public void display() {
+		if(top==-1) {
+			System.out.println("stack empty");
+		}
+		else {
+		for(int i=top;i>=0;i--) {
+			System.out.println(a[i]);
+		}
+		}
+	}
+}
+
+public class stack {
+ public static void main(String[]args) {
+	
+	 stackdemo s= new stackdemo();//object creation
+
+	 s.push(10);
+	 s.push(10);
+	 s.push(10);
+	 s.push(10);
+	 s.push(10);
+	 s.push(10);
+	 
+	 
+	 s.peek();
+	 
+    // s.pop(); //stack is empty
+     s.display(); //first 5 elements will be printed and prints stack is full
+ }
+}
+*/
