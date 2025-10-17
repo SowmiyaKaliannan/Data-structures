@@ -1,0 +1,76 @@
+package course;
+
+class Queue{
+	int a[] = new int[5];
+	int r=-1;  //queue empty...r is rear
+	int f=-1;  //queue empty...f is front
+	
+	public void enqueue(int data) {
+		if(r==a.length-1) {
+			System.out.println("Stack is full");
+		}
+		else if(r==-1 && f==-1) {  // if both are -1,then this was the first element to enter 
+			r=0;
+			f=0;
+			a[r]=data;
+		}
+		else {
+		r++;
+		a[r]=data;
+		}
+	}
+	
+	public void display() {
+		
+		if(r==-1 && f==-1) { 
+			System.out.println("queue is empty");   //underflow...if i didnt give this if part...it shows error for underflow..
+			                                         //happens when we try to dequeue/display when nothing is in queue.
+		}
+		else {
+		for(int i=f;i<=r;i++) {
+			System.out.println(a[i]);
+		}
+		
+		}
+		
+	}
+	
+	
+	public void dequeue() {
+		if(r==-1 && f==-1) {
+			System.out.println("queue is empty");    
+		}
+		else if(r==f){    //r=f ...only one element is present
+			System.out.println("popped element = " + a[f]);
+		 r=-1;
+		 f=-1;
+		}
+		else {
+			System.out.println("popped element = " + a[f]);
+			f++;
+		}
+	}
+	
+	public void peek() {
+		System.out.println("peek element = "+ a[f]);
+	}
+}
+public class Queuedemo {
+
+	public static void main(String[] args) {
+		Queue q = new Queue();//create object queue
+		q.enqueue(10);
+		q.enqueue(20);
+		q.enqueue(30);
+		q.enqueue(40);
+		q.enqueue(50);
+		q.enqueue(60);// stack is full ...60 is not to print
+        q.display();
+        
+        //q.dequeue();
+        q.display();
+        
+        q.peek();
+	}
+
+}
