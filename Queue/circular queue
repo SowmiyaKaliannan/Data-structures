@@ -1,0 +1,77 @@
+package course;
+
+class Queue1{
+	int a[] = new int[5];
+	int r=-1;  //queue empty...r is rear
+	int f=-1;  //queue empty...f is front
+	
+	public void enqueue(int data) {
+		if(f==(r+1)% a.length) {  // check the queue is full or not.....instead of a.length-1..we can use the size ex:  f==(r+1)%5...5 is a.length or n 
+			System.out.println("Stack is full");
+		}
+		else if(r==-1 && f==-1) {  // if both are -1,then this was the first element to enter ...it will run only one time
+			r=0;
+			f=0;
+			a[r]=data;
+		}
+		else {
+		r=(r+1)% a.length;
+		a[r]=data;
+		}
+	}
+	
+	public void display() {
+		
+		if(r==-1 && f==-1) { 
+			System.out.println("queue is empty");   //underflow...if i didnt give this if part...it shows error for underflow..
+			                                         //happens when we try to dequeue/display when nothing is in queue.
+		}
+		else {
+		int i=f; //here front position is stored in variable i
+		while(i!=r)// i will be traversed until see the rear
+		{
+			System.out.println(a[i]);
+			i=(i+1)% a.length;
+		}
+		//System.out.println(a[r]);
+	}
+		}
+	
+	
+	public void dequeue() {
+		if(r==-1 && f==-1) {
+			System.out.println("queue is empty");    
+		}
+		else if(r==f){    //r=f ...only one element is present
+			System.out.println("popped element = " + a[f]);
+		 r=-1;
+		 f=-1;
+		}
+		else {
+			System.out.println("popped element = " + a[f]);
+			f=(f+1)% a.length;
+		}
+	}
+	
+	public void peek() {
+		System.out.println("peek element = "+ a[f]);
+	}
+}
+public class Circularqueue {
+
+	public static void main(String[] args) {
+		Queue1 q = new Queue1();//create object queue
+		q.enqueue(10);
+		q.enqueue(20);
+		q.enqueue(30);
+		q.enqueue(40);
+		q.enqueue(50);
+		q.display();
+		
+
+	
+		
+		
+	}
+
+}
