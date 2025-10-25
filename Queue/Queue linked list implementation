@@ -1,0 +1,109 @@
+package course;
+/*  
+ * 
+class Node2{
+	int data;//0 by default...initial point
+	Node next;//null by default...initial point
+}
+
+class Myqueue{
+	Node2 rear,front;
+	
+	//insertion
+	public void enqueue(int data) {
+		Node2 n = new Node2();// new node creation
+		n.data = data;                                      // here we give data everytime ...we use constructor on other steps 
+		n.next = null;
+	}
+}*/
+
+
+class Node2{
+	int data;//0 by default...initial point
+	Node2 next;//null by default...initial point
+	
+	Node2(int data){
+		this.data = data;
+	}
+}
+
+class Myqueue{
+	Node2 rear,front;
+	
+	//insertion
+	public void enqueue(int data) {
+		Node2 n = new Node2(data);// new node creation
+		if(rear==null) {  // this condition works when its the first element...
+			rear = n;
+			front = n;
+		}
+		else {  //more than one element...2nd element or 3rd or....
+			rear.next= n;//put the n(address of next) in rear's next 
+			rear = n; //update rear
+		}
+		System.out.println("element enqueued:"+data);  //prints the output element...this is not needed..because we use display function here 
+	}
+	
+	//delete
+	public void dequeue() {
+		if(rear==null) {
+			System.out.println("queue empty");    //to avoid underflow
+		}
+		else {
+		System.out.println("dequeue element"+front.data);
+		front=front.next; //front.next value is next node's address...now that node was the front
+	}
+	}
+	
+	//peek...front element
+	public void peek() {
+		if(rear==null) {
+			System.out.println("queue empty");    //to avoid underflow
+		}
+		else {
+		System.out.println("peek element"+front.data);
+	}
+	}
+	
+	//display
+	/*
+	 public void display() {
+	 
+	   Node2 temp = front;
+	   while(temp!=rear) {
+		   System.out.println(temp.data+" ");
+		   temp = temp.next;
+	   }
+	   System.out.println(temp.data);//to print last element....because in while loop temp!=rear...condition fails when comes to last element...
+	                                 //so last element not prints
+	}
+	*/
+	
+	public void display() {
+		   Node2 temp = front;
+		   while(temp!=null) {    // if we put null here instead of rear...it also prints last element
+			   System.out.println(temp.data+" ");
+			   temp = temp.next;
+		   }
+		}
+}
+public class Queuelinkedlist {
+
+	public static void main(String[] args) {
+		
+		Myqueue q =new Myqueue();
+		q.enqueue(10);//  data 20 works in void enqueue
+		q.enqueue(20);
+		q.enqueue(30);
+		
+		//q.display();
+		
+		q.dequeue();
+		q.display();
+		
+		q.peek();
+	
+		
+	}
+
+}
