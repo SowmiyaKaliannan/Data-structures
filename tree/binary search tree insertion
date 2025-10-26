@@ -1,0 +1,68 @@
+package course;
+
+class TreeNode{        //node declaration
+	int data;
+	TreeNode left;
+	TreeNode right;
+    
+	//assign data field....constructor
+	public TreeNode(int data) {
+		this.data=data;
+	}
+}
+	
+class BST{
+	TreeNode root;
+	public BST (int data) {    //constructor
+		root = new TreeNode(data);    // root node creation.....here i pass a constructor...so i need to write a constuctor (in 10th line of code)
+	}
+	
+
+	//it is used to pass the value
+	//we call this insert function.....this insert function calls the insertNode funtion
+	public void insert(int data) {
+		insertNode(root,data);
+	}
+	
+    //if a element needs to be inserted...it should be compared with root node	
+	//it was the original insertion function
+	public TreeNode insertNode(TreeNode root,int data) {   //here i give return type as that node(TreeNode) instead of void
+     
+		if(root==null) 
+			return new TreeNode(data); // node creation
+		
+		if(data<root.data) 
+			root.left = insertNode(root.left,data);
+		
+		else 
+			root.right = insertNode(root.right,data);
+	
+		return root; // it is not important..we give TreeNode as return type..instead of void ....to avoid error we write return here; 
+		
+	}
+	//traversal recursively
+	public void inOrder(TreeNode root) {
+		if(root ==null) 
+			return;
+		else {
+			inOrder(root.left);
+			System.out.print(root.data+" ");
+			inOrder(root.right);
+		}
+	}
+}
+
+public class Binarysearchtree {
+
+	public static void main(String[] args) {
+		 BST bst = new BST(50);        // object creation for BST.....pass an parameter/argument as 50-- root node
+         bst.insert(30);
+         bst.insert(10);
+         bst.insert(60);
+         bst.insert(55);
+         bst.insert(5);
+         
+         bst.inOrder(bst.root);
+	}
+}
+
